@@ -1122,10 +1122,10 @@ body.map-open .petals { display: none; }
 .home-footprints { scroll-margin-top: 86px; }
 .home-footprints .page-heading .section-head h2 { font-size: clamp(26px, 3vw, 34px); }
 .home-footprints .map-card:not(.expanded) .china-map { height: var(--map-height, clamp(560px, 65vw, 720px)); }
-.header-link[href="#footprints"] { display: inline-flex; }
+.header-link[href="#admin"] { display: inline-flex; }
 @media (max-width: 680px) {
   header { justify-content: space-between; padding-inline: 12px; }
-  .header-link[href="#footprints"] { padding: 7px 10px; font-size: 12px; }
+  .header-link[href="#admin"] { padding: 7px 10px; font-size: 12px; }
   .home-footprints { scroll-margin-top: 70px; }
   .home-footprints .map-card { padding: 10px; }
   .home-footprints .map-card:not(.expanded) .china-map { height: var(--map-height, clamp(370px, 110vw, 500px)); }
