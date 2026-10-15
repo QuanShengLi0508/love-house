@@ -1030,3 +1030,9 @@ html, body { overflow-x: clip; }
   100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r)); }
 }
 @media (prefers-reduced-motion: reduce) { .click-heart { display: none; } }
+
+/* 名字放到头像下方 */
+.avatar-wrap { display: flex; flex-direction: column; align-items: center; }
+.avatar-wrap .name-pill { display: inline-block; min-width: 0; margin-top: 14px; padding: 6px 18px; font-size: 18px; white-space: nowrap; }
+@media (max-width: 680px) { .avatar-wrap .name-pill { margin-top: 10px; padding: 4px 12px; font-size: 14px; letter-spacing: 1px; } }
+@media (max-width: 400px) { .avatar-wrap .name-pill { padding: 3px 8px; font-size: 13px; letter-spacing: 0; } }
