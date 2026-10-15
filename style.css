@@ -1051,7 +1051,8 @@ details.admin-card[open] summary::before { transform: rotate(90deg); }
 details.admin-card summary::-webkit-details-marker { display: none; }
 .admin-card h3 { display: flex; align-items: center; gap: 8px; }
 
-/* ========== 留言板 ========== */
+/* ========== 首页留言板 ========== */
+.home-guestbook .page-heading .section-head h2 { font-size: clamp(23px, 3vw, 28px); }
 .guest-form {
   margin: 26px 0 8px; padding: 22px 24px; border-radius: var(--radius);
   background: var(--glass-strong); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
