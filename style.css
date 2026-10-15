@@ -685,3 +685,104 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
   .banner-art .tree { width: 210px; margin-left: -105px; }
   .banner-art .sun { width: 220px; height: 220px; margin-left: -110px; top: 20px; }
 }
+
+/* ========== 梦幻毛玻璃 ========== */
+:root {
+  --glass: rgba(255, 255, 255, .46);
+  --glass-strong: rgba(255, 255, 255, .62);
+  --glass-border: rgba(255, 255, 255, .75);
+  --glass-blur: blur(20px) saturate(1.6);
+  --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(255, 255, 255, .25), 0 12px 36px -12px rgba(160, 90, 90, .28);
+}
+
+/* 背景：缓慢漂移的柔光色团 */
+.dream-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.dream-bg i { position: absolute; display: block; border-radius: 50%; filter: blur(70px); opacity: .7; animation: drift 24s ease-in-out infinite alternate; }
+.dream-bg i:nth-child(1) { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: #ffc2d1; }
+.dream-bg i:nth-child(2) { width: 40vmax; height: 40vmax; right: -10vmax; top: -6vmax; background: #ffd9a6; animation-delay: -6s; }
+.dream-bg i:nth-child(3) { width: 36vmax; height: 36vmax; left: 30%; top: 40%; background: #e4d4ff; opacity: .55; animation-delay: -12s; }
+.dream-bg i:nth-child(4) { width: 34vmax; height: 34vmax; left: -8vmax; bottom: -12vmax; background: #ffe0ea; animation-delay: -3s; }
+.dream-bg i:nth-child(5) { width: 30vmax; height: 30vmax; right: -6vmax; bottom: -8vmax; background: #d6ecd2; opacity: .5; animation-delay: -9s; }
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vmax, 3vmax) scale(1.08); }
+  100% { transform: translate(-3vmax, 5vmax) scale(.95); }
+}
+
+/* 飘落的花瓣（由 app.js 生成） */
+.petals { position: fixed; inset: 0; z-index: 15; overflow: hidden; pointer-events: none; }
+.petal {
+  position: absolute; top: -40px; left: var(--x);
+  width: var(--s); height: calc(var(--s) * .8);
+  border-radius: 150% 0 150% 0;
+  background: linear-gradient(135deg, #ffd6e0, #f48aa4);
+  opacity: 0;
+  animation: petal-fall var(--d) linear var(--delay) infinite;
+}
+.petal:nth-child(3n) { background: linear-gradient(135deg, #fff, #ffc9d6); }
+.petal:nth-child(4n) { border-radius: 50% 0 50% 50%; }
+@keyframes petal-fall {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  8% { opacity: .85; }
+  50% { transform: translate(var(--sway), 52vh) rotate(220deg); }
+  90% { opacity: .7; }
+  100% { opacity: 0; transform: translate(calc(var(--sway) * -.5), 108vh) rotate(460deg); }
+}
+
+/* 去掉原来的点阵和局部光晕，让色团透出来 */
+body { background-image: radial-gradient(rgba(255, 255, 255, .5) 1px, transparent 1px); background-size: 22px 22px; background-repeat: repeat; }
+
+/* 毛玻璃表面 */
+header { background: rgba(255, 255, 255, .35); border-bottom-color: rgba(255, 255, 255, .6); }
+nav, .love-counter, .feature, .milestone, .mini-card, .entry, .stat, .empty, .date-pill,
+.filters, .admin-card, .quote-banner, .text-button, .button.secondary, .section-head > a {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.section-head > a { border-color: transparent; box-shadow: none; background: rgba(255, 255, 255, .3); }
+.love-counter { background: var(--glass-strong); }
+.feature:hover, .milestone:hover, .entry:hover { background: var(--glass-strong); box-shadow: var(--glass-shadow), 0 18px 40px -14px rgba(200, 100, 110, .35); }
+.feature::after { opacity: .55; filter: blur(6px); }
+.stat:nth-child(1) { background: rgba(255, 240, 200, .45); }
+.stat:nth-child(2) { background: rgba(255, 220, 230, .45); }
+.stat:nth-child(3) { background: rgba(225, 240, 215, .45); }
+.mini-card { background: linear-gradient(135deg, rgba(255, 246, 220, .55), rgba(255, 228, 236, .5)); }
+.quote-banner { background: linear-gradient(135deg, rgba(255, 241, 214, .55), rgba(253, 227, 214, .45) 55%, rgba(253, 234, 238, .5)); }
+.banner-art { background: linear-gradient(180deg, rgba(255, 230, 187, .6), rgba(255, 217, 184, .5) 55%, rgba(249, 231, 207, .3)); }
+.entry.done { background: linear-gradient(135deg, rgba(255, 255, 255, .5), rgba(225, 240, 215, .5)); }
+.milestone.is-today { background: linear-gradient(135deg, rgba(255, 255, 255, .55), rgba(255, 220, 230, .55)); }
+.empty { border: 1.5px dashed rgba(255, 255, 255, .9); }
+.calendar { box-shadow: 0 0 0 1px rgba(255, 255, 255, .8), var(--shadow-sm); }
+.polaroid { background: rgba(255, 255, 255, .78); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); }
+
+/* 弹窗：磨砂卡片 + 更柔的遮罩 */
+dialog {
+  background: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(28px) saturate(1.7); -webkit-backdrop-filter: blur(28px) saturate(1.7);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), 0 30px 80px -20px rgba(150, 80, 90, .45);
+}
+dialog::backdrop { background: rgba(255, 220, 228, .25); backdrop-filter: blur(14px) saturate(1.3); }
+input, textarea { background: rgba(255, 255, 255, .7); border-color: rgba(226, 207, 187, .8); }
+.close { background: rgba(255, 255, 255, .6); }
+#toast { background: rgba(255, 255, 255, .7); color: var(--ink); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); }
+
+/* 按钮加一点玻璃高光 */
+.button:not(.secondary) { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), 0 10px 22px -10px rgba(226, 110, 110, .8); }
+.button.secondary { color: var(--ink); }
+
+@media (max-width: 680px) {
+  header { background: rgba(255, 250, 247, .78); }
+  nav { background: rgba(255, 255, 255, .62); }
+  .dream-bg i { filter: blur(50px); }
+}
+@media (prefers-reduced-motion: reduce) { .petals { display: none; } }
+
+/* 细滚动条，配合毛玻璃 */
+* { scrollbar-width: thin; scrollbar-color: rgba(226, 150, 140, .45) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(226, 150, 140, .45); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(226, 135, 110, .65); }
