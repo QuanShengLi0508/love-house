@@ -5,7 +5,7 @@ const icon=n=>`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n
 document.querySelectorAll('[data-icon]').forEach(el=>el.insertAdjacentHTML('afterbegin',icon(el.dataset.icon)));
 const start='2026-10-15', DAY=86400000, key='xiaonian-cottage-v1';
 // 两人所在城市：填上 city、lat、lon 后，首页会显示双方实时天气和距离（天气来自 Open-Meteo，免费、无需注册）
-const people=[{name:'小年',avatar:'assets/photo-1.png',alt:'小年的白色小狗头像',city:'',lat:null,lon:null},{name:'小年对象',avatar:'assets/photo-2.png',alt:'小年对象的棕色小狗头像',city:'',lat:null,lon:null}];
+const people=[{name:'小年',avatar:'assets/photo-1.png',alt:'小年的白色小狗头像',city:'湖南 · 长沙',lat:28.23,lon:112.94},{name:'小年对象',avatar:'assets/photo-2.png',alt:'小年对象的棕色小狗头像',city:'上海',lat:31.23,lon:121.47}];
 const photos=[{src:'assets/photo-3.png',title:'镜头里，是我们呀',note:'两个人的回忆 · 01'},{src:'assets/photo-4.png',title:'和你靠近一点点',note:'两个人的回忆 · 02'},{src:'assets/photo-5.png',title:'把可爱装进相机里',note:'两个人的回忆 · 03'},{src:'assets/photo-6.png',title:'一起躺在好天气里',note:'两个人的回忆 · 04'}];
 const albums=[{id:'us',title:'镜头里的我们',note:'两个人的合照',photos:[0,1]},{id:'cute',title:'像我们的小家伙',note:'可爱的小动物们',photos:[2,3]}];
 const automaticDates=[{title:'我们的第一个月',date:'2026-11-15',sub:'每个月的 15 日，都是一个小纪念。'},{title:'在一起的第 100 天',date:'2027-01-22',sub:'2026 年 10 月 15 日计为第 1 天。'},{title:'我们的第一个周年',date:'2027-10-15',sub:'想和你走过四季，再走过好多四季。'}];
