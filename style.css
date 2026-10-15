@@ -1117,3 +1117,21 @@ body.map-open .petals { display: none; }
   .guest-actions .button { width: 100%; margin-left: 0; }
   .messages { columns: 1; }
 }
+
+/* 首页足迹：中国地图占据完整一行，手机端保留入口。 */
+.home-footprints { scroll-margin-top: 86px; }
+.home-footprints .page-heading .section-head h2 { font-size: clamp(26px, 3vw, 34px); }
+.home-footprints .map-card:not(.expanded) .china-map { height: clamp(560px, 65vw, 720px); }
+.header-link[href="#footprints"] { display: inline-flex; }
+@media (max-width: 680px) {
+  header { justify-content: space-between; padding-inline: 12px; }
+  .header-link[href="#footprints"] { padding: 7px 10px; font-size: 12px; }
+  .home-footprints { scroll-margin-top: 70px; }
+  .home-footprints .map-card { padding: 10px; }
+  .home-footprints .map-card:not(.expanded) .china-map { height: clamp(370px, 110vw, 500px); }
+  .home-footprints .map-toolbar { align-items: flex-start; }
+  .home-footprints .map-hint { max-width: 62%; line-height: 1.6; }
+  .home-footprints .map-toolbar .soft-button { flex-shrink: 0; padding: 8px 10px; }
+}
+
+.home-footprints .map-card.expanded { background: #fff8f3; }
