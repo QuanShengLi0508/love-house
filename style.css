@@ -100,7 +100,7 @@ nav a.active { color: #fff; background: linear-gradient(135deg, #f4ae84, var(--p
 
 /* ========== 通用 ========== */
 main { max-width: 1120px; margin: 0 auto; padding: 0 28px; min-height: 65vh; animation: page-in .45s ease both; }
-@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
 
 .eyebrow { font-size: 12px; letter-spacing: 4px; color: var(--peach-deep); text-transform: uppercase; font-weight: 600; }
 .muted { color: var(--ink-2); font-size: 14px; line-height: 1.75; }
@@ -1036,3 +1036,83 @@ html, body { overflow-x: clip; }
 .avatar-wrap .name-pill { display: inline-block; min-width: 0; margin-top: 14px; padding: 6px 18px; font-size: 18px; white-space: nowrap; }
 @media (max-width: 680px) { .avatar-wrap .name-pill { margin-top: 10px; padding: 4px 12px; font-size: 14px; letter-spacing: 1px; } }
 @media (max-width: 400px) { .avatar-wrap .name-pill { padding: 3px 8px; font-size: 13px; letter-spacing: 0; } }
+
+/* ========== 管理员 ========== */
+.header-links { display: flex; gap: 8px; }
+.admin-badge { color: #c4566b; background: rgba(253, 234, 238, .75); }
+.admin-form { max-width: 420px; }
+.admin-form label:first-child { margin-top: 4px; }
+label.check { display: flex; align-items: center; gap: 8px; font-weight: 400; color: var(--ink-2); }
+label.check input { width: 18px; height: 18px; margin: 0; accent-color: var(--peach-deep); }
+.form-error { color: #c4566b; font-size: 13px; margin: 10px 0 0; min-height: 1em; }
+details.admin-card summary { cursor: pointer; font-weight: 600; font-size: 16px; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.admin-card summary::before { content: "›"; font-size: 22px; line-height: 1; color: var(--ink-3); transition: transform .2s; }
+details.admin-card[open] summary::before { transform: rotate(90deg); }
+details.admin-card summary::-webkit-details-marker { display: none; }
+.admin-card h3 { display: flex; align-items: center; gap: 8px; }
+
+/* ========== 留言板 ========== */
+.guest-form {
+  margin: 26px 0 8px; padding: 22px 24px; border-radius: var(--radius);
+  background: var(--glass-strong); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+}
+.guest-form label:first-child { margin-top: 0; }
+.guest-row { max-width: 280px; }
+.guest-form textarea { min-height: 96px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.guest-actions { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.guest-actions .button { margin-left: auto; }
+.file-pill {
+  display: inline-flex; align-items: center; gap: 6px; margin: 0;
+  padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 400; color: var(--peach-deep);
+  background: rgba(255, 255, 255, .7); border: 1px dashed var(--line-strong); cursor: pointer;
+}
+.file-pill:hover { background: var(--peach-soft); }
+.file-name { font-size: 13px; color: var(--ink-3); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.messages { columns: 2 320px; column-gap: 18px; margin: 24px 0; }
+.messages .empty, .messages .loading { column-span: all; }
+.message {
+  break-inside: avoid; margin-bottom: 18px; padding: 18px 20px; border-radius: var(--radius);
+  background: var(--glass); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+}
+.msg-head { display: flex; align-items: center; gap: 12px; }
+.msg-head b { display: block; font-size: 15px; }
+.msg-avatar { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-hand); font-size: 18px; color: var(--ink); border: 2px solid #fff; box-shadow: var(--shadow-sm); }
+.msg-meta { font-size: 12px; color: var(--ink-3); }
+.msg-delete { margin-left: auto; width: 32px; height: 32px; border: 0; border-radius: 50%; display: grid; place-items: center; color: var(--ink-3); background: transparent; }
+.msg-delete:hover { color: #c4566b; background: #fdecef; }
+.message p { white-space: pre-wrap; overflow-wrap: anywhere; margin: 12px 0 0; line-height: 1.8; color: var(--ink-2); }
+.msg-image { display: block; width: 100%; margin-top: 12px; padding: 0; border: 0; background: none; border-radius: 14px; overflow: hidden; }
+.msg-image img { display: block; width: 100%; max-height: 360px; object-fit: cover; transition: transform .3s; }
+.msg-image:hover img { transform: scale(1.03); }
+
+/* ========== 足迹地图 ========== */
+.map-card {
+  margin: 22px 0 8px; padding: 14px; border-radius: var(--radius);
+  background: var(--glass); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  transition: box-shadow .3s;
+}
+.map-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 2px 4px 10px; }
+.map-hint { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-2); }
+.map-hint .ico { color: #e0708a; }
+.china-map { position: relative; height: 460px; border-radius: 16px; overflow: hidden; background: linear-gradient(180deg, rgba(255, 246, 236, .6), rgba(255, 236, 242, .5)); }
+.map-loading { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; }
+.map-card.expanded {
+  position: fixed; inset: 16px; z-index: 50; margin: 0; display: flex; flex-direction: column;
+  background: rgba(255, 250, 247, .88); box-shadow: var(--glass-shadow), 0 30px 80px -20px rgba(150, 80, 90, .45);
+  animation: pop .25s ease both;
+}
+.map-card.expanded .china-map { flex: 1; height: auto; }
+body.map-open { overflow: hidden; }
+body.map-open .petals { display: none; }
+@media (max-width: 680px) {
+  .china-map { height: 340px; }
+  .map-hint { font-size: 12px; }
+  .map-card.expanded { inset: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 60; }
+  .guest-form { padding: 18px; }
+  .guest-actions .button { width: 100%; margin-left: 0; }
+  .messages { columns: 1; }
+}
