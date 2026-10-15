@@ -1171,3 +1171,5 @@ body.map-open .petals { display: none; }
   .map-empty-note b { font-size: 13px; }
   .map-empty-note p { font-size: 11px; }
 }
+
+.home-footprints .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
