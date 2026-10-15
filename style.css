@@ -1121,17 +1121,33 @@ body.map-open .petals { display: none; }
 /* 首页足迹：中国地图占据完整一行，手机端保留入口。 */
 .home-footprints { scroll-margin-top: 86px; }
 .home-footprints .page-heading .section-head h2 { font-size: clamp(26px, 3vw, 34px); }
-.home-footprints .map-card:not(.expanded) .china-map { height: clamp(560px, 65vw, 720px); }
+.home-footprints .map-card:not(.expanded) .china-map { height: var(--map-height, clamp(560px, 65vw, 720px)); }
 .header-link[href="#footprints"] { display: inline-flex; }
 @media (max-width: 680px) {
   header { justify-content: space-between; padding-inline: 12px; }
   .header-link[href="#footprints"] { padding: 7px 10px; font-size: 12px; }
   .home-footprints { scroll-margin-top: 70px; }
   .home-footprints .map-card { padding: 10px; }
-  .home-footprints .map-card:not(.expanded) .china-map { height: clamp(370px, 110vw, 500px); }
+  .home-footprints .map-card:not(.expanded) .china-map { height: var(--map-height, clamp(370px, 110vw, 500px)); }
   .home-footprints .map-toolbar { align-items: flex-start; }
   .home-footprints .map-hint { max-width: 62%; line-height: 1.6; }
   .home-footprints .map-toolbar .soft-button { flex-shrink: 0; padding: 8px 10px; }
 }
 
 .home-footprints .map-card.expanded { background: #fff8f3; }
+
+/* 缩放按钮与可拖动的高度手柄。 */
+.map-controls { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; }
+.map-zoom { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 50%; background: #fffaf5; color: var(--ink); font-size: 21px; line-height: 1; }
+.map-controls output { min-width: 45px; text-align: center; font-size: 12px; color: var(--ink-2); }
+.map-sizing { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding-top: 8px; font-size: 12px; color: var(--ink-3); }
+.map-resize-handle { width: 44px; height: 32px; border: 1px dashed var(--line-strong); border-radius: 10px; background: var(--glass-strong); color: var(--peach-deep); font-size: 23px; cursor: ns-resize; touch-action: none; user-select: none; }
+.map-resize-handle:hover { background: var(--peach-soft); }
+.map-card.expanded .map-sizing { display: none; }
+.map-card.expanded .china-map { min-height: 0; }
+@media (max-width: 680px) {
+  .home-footprints .map-toolbar { flex-direction: column; gap: 10px; }
+  .home-footprints .map-hint { max-width: none; }
+  .map-controls { width: 100%; justify-content: flex-start; gap: 5px; }
+  .map-controls [data-map-toggle] { margin-left: auto; }
+}
